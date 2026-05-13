@@ -1,0 +1,12 @@
+[submodule "Uimin_Hazel/vender/spdlog"]
+	path = Uimin_Hazel/vender/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "Uimin_Hazel/vendor/GLFW"]
+	path = Uimin_Hazel/vendor/GLFW
+	url = https://github.com/TheCherno/GLFW
+[submodule "Uimin_Hazel/vendor/imgui"]
+	path = Uimin_Hazel/vendor/imgui
+	url = https://github.com/TheCherno/imgui
+[submodule "Uimin_Hazel/vendor/glm"]
+	path = Uimin_Hazel/vendor/glm
+	url = https://github.com/g-truc/glm
