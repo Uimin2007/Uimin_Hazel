@@ -1,0 +1,208 @@
+From 8174f7255c1e02dd18e2ecd41305bf42949282ba Mon Sep 17 00:00:00 2001
+From: lovely_santa <laurens.scheldeman@gmail.com>
+Date: Sat, 5 Oct 2019 16:20:55 +0200
+Subject: [PATCH] Adding VS files to gitignore
+
+---
+ .gitignore                             |  14 ++-
+ Hazel/vendor/Glad/Glad.vcxproj         | 128 -------------------------
+ Hazel/vendor/Glad/Glad.vcxproj.filters |  30 ------
+ 3 files changed, 9 insertions(+), 163 deletions(-)
+ delete mode 100644 Hazel/vendor/Glad/Glad.vcxproj
+ delete mode 100644 Hazel/vendor/Glad/Glad.vcxproj.filters
+
+diff --git a/.gitignore b/.gitignore
+index 1d8cb2f48..bb5db109e 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,7 +1,11 @@
+-# Directories
+-.vs/
+-/bin/
++# Binaries
++**/bin/
++!vendor/bin/premake/
+ bin-int/
+ 
+-# Files
+-*.user
+\ No newline at end of file
++# Visual Studio files and folder
++.vs/
++**.sln
++**.vcxproj
++**.vcxproj.filters
++**.vcxproj.user
+\ No newline at end of file
+diff --git a/Hazel/vendor/Glad/Glad.vcxproj b/Hazel/vendor/Glad/Glad.vcxproj
+deleted file mode 100644
+index 3ee118d11..000000000
+--- a/Hazel/vendor/Glad/Glad.vcxproj
++++ /dev/null
+@@ -1,128 +0,0 @@
+-﻿<?xml version="1.0" encoding="utf-8"?>
+-<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+-  <ItemGroup Label="ProjectConfigurations">
+-    <ProjectConfiguration Include="Debug|x64">
+-      <Configuration>Debug</Configuration>
+-      <Platform>x64</Platform>
+-    </ProjectConfiguration>
+-    <ProjectConfiguration Include="Release|x64">
+-      <Configuration>Release</Configuration>
+-      <Platform>x64</Platform>
+-    </ProjectConfiguration>
+-    <ProjectConfiguration Include="Dist|x64">
+-      <Configuration>Dist</Configuration>
+-      <Platform>x64</Platform>
+-    </ProjectConfiguration>
+-  </ItemGroup>
+-  <PropertyGroup Label="Globals">
+-    <ProjectGuid>{BDD6857C-A90D-870D-52FA-6C103E10030F}</ProjectGuid>
+-    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+-    <Keyword>Win32Proj</Keyword>
+-    <RootNamespace>Glad</RootNamespace>
+-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+-  </PropertyGroup>
+-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+-    <ConfigurationType>StaticLibrary</ConfigurationType>
+-    <UseDebugLibraries>true</UseDebugLibraries>
+-    <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v141</PlatformToolset>
+-  </PropertyGroup>
+-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+-    <ConfigurationType>StaticLibrary</ConfigurationType>
+-    <UseDebugLibraries>false</UseDebugLibraries>
+-    <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v141</PlatformToolset>
+-  </PropertyGroup>
+-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'" Label="Configuration">
+-    <ConfigurationType>StaticLibrary</ConfigurationType>
+-    <UseDebugLibraries>false</UseDebugLibraries>
+-    <CharacterSet>Unicode</CharacterSet>
+-    <PlatformToolset>v141</PlatformToolset>
+-  </PropertyGroup>
+-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+-  <ImportGroup Label="ExtensionSettings">
+-  </ImportGroup>
+-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+-  </ImportGroup>
+-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+-  </ImportGroup>
+-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+-  </ImportGroup>
+-  <PropertyGroup Label="UserMacros" />
+-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+-    <OutDir>bin\Debug-windows-x86_64\Glad\</OutDir>
+-    <IntDir>bin-int\Debug-windows-x86_64\Glad\</IntDir>
+-    <TargetName>Glad</TargetName>
+-    <TargetExt>.lib</TargetExt>
+-  </PropertyGroup>
+-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+-    <OutDir>bin\Release-windows-x86_64\Glad\</OutDir>
+-    <IntDir>bin-int\Release-windows-x86_64\Glad\</IntDir>
+-    <TargetName>Glad</TargetName>
+-    <TargetExt>.lib</TargetExt>
+-  </PropertyGroup>
+-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+-    <OutDir>bin\Dist-windows-x86_64\Glad\</OutDir>
+-    <IntDir>bin-int\Dist-windows-x86_64\Glad\</IntDir>
+-    <TargetName>Glad</TargetName>
+-    <TargetExt>.lib</TargetExt>
+-  </PropertyGroup>
+-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+-    <ClCompile>
+-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+-      <WarningLevel>Level3</WarningLevel>
+-      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+-      <Optimization>Disabled</Optimization>
+-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+-    </ClCompile>
+-    <Link>
+-      <SubSystem>Windows</SubSystem>
+-      <GenerateDebugInformation>true</GenerateDebugInformation>
+-    </Link>
+-  </ItemDefinitionGroup>
+-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+-    <ClCompile>
+-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+-      <WarningLevel>Level3</WarningLevel>
+-      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <Optimization>Full</Optimization>
+-      <FunctionLevelLinking>true</FunctionLevelLinking>
+-      <IntrinsicFunctions>true</IntrinsicFunctions>
+-      <MinimalRebuild>false</MinimalRebuild>
+-      <StringPooling>true</StringPooling>
+-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+-    </ClCompile>
+-    <Link>
+-      <SubSystem>Windows</SubSystem>
+-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+-      <OptimizeReferences>true</OptimizeReferences>
+-    </Link>
+-  </ItemDefinitionGroup>
+-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
+-    <ClCompile>
+-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+-      <WarningLevel>Level3</WarningLevel>
+-      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+-      <Optimization>Disabled</Optimization>
+-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+-    </ClCompile>
+-    <Link>
+-      <SubSystem>Windows</SubSystem>
+-    </Link>
+-  </ItemDefinitionGroup>
+-  <ItemGroup>
+-    <ClInclude Include="include\KHR\khrplatform.h" />
+-    <ClInclude Include="include\glad\glad.h" />
+-  </ItemGroup>
+-  <ItemGroup>
+-    <ClCompile Include="src\glad.c" />
+-  </ItemGroup>
+-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+-  <ImportGroup Label="ExtensionTargets">
+-  </ImportGroup>
+-</Project>
+\ No newline at end of file
+diff --git a/Hazel/vendor/Glad/Glad.vcxproj.filters b/Hazel/vendor/Glad/Glad.vcxproj.filters
+deleted file mode 100644
+index 0c1d776ae..000000000
+--- a/Hazel/vendor/Glad/Glad.vcxproj.filters
++++ /dev/null
+@@ -1,30 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+-  <ItemGroup>
+-    <Filter Include="include">
+-      <UniqueIdentifier>{89AF369E-F58E-B539-FEA6-40106A051C9B}</UniqueIdentifier>
+-    </Filter>
+-    <Filter Include="include\KHR">
+-      <UniqueIdentifier>{7D5AC031-E90F-3927-7204-33FEDEB82F2B}</UniqueIdentifier>
+-    </Filter>
+-    <Filter Include="include\glad">
+-      <UniqueIdentifier>{30A0DB69-1C03-6B0E-C588-A3C4B1CA3691}</UniqueIdentifier>
+-    </Filter>
+-    <Filter Include="src">
+-      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+-    </Filter>
+-  </ItemGroup>
+-  <ItemGroup>
+-    <ClInclude Include="include\KHR\khrplatform.h">
+-      <Filter>include\KHR</Filter>
+-    </ClInclude>
+-    <ClInclude Include="include\glad\glad.h">
+-      <Filter>include\glad</Filter>
+-    </ClInclude>
+-  </ItemGroup>
+-  <ItemGroup>
+-    <ClCompile Include="src\glad.c">
+-      <Filter>src</Filter>
+-    </ClCompile>
+-  </ItemGroup>
+-</Project>
+\ No newline at end of file
